@@ -6,7 +6,7 @@ import com.rocs.nurse.desktop.application.model.UpdateMedical.UpdateMedical;
 
 import java.util.Scanner;
 
-public class NurseDesktopApplication {
+public class InfirmarySystemApplication {
     public static void main(String[] args) {
 
         UpdateMedicalFacade updatemedicalFacade = new UpdateMedicalFacadeImpl();
@@ -34,54 +34,39 @@ public class NurseDesktopApplication {
 
         sc.nextLine();
         System.out.println("Enter the id of the updatemedical to update: ");
-        String id = sc.nextLine();
+        int id = sc.nextInt();
         UpdateMedical updatemedical = updatemedicalFacade.getUpdateMedicalById(id);
         if (updatemedical == null) {
             System.out.println("UpdateMedical to update not found.");
         } else {
             System.out.println("Updating an updatemedical");
-            System.out.println("Enter updatemedical patient: ");
-            int patient = sc.nextInt();
-            System.out.println("Enter updatemedical studentnumber: ");
-            String studentnumber = sc.nextLine();
-            System.out.println("Enter updatemedical firstname: ");
-            String firstname = sc.nextLine();
-            System.out.println("Enter updatemedical middlename: ");
-            String meddlename = sc.nextLine();
-            System.out.println("Enter updatemedical lastname:");
-            String lastname = sc.nextLine();
+            System.out.println("Enter updatemedical studentid: ");
+            int studentid = sc.nextInt();
+            System.out.println("Enter updatemedical ailmentid: ");
+            int ailmentid = sc.nextInt();
+            System.out.println("Enter updatemedical medhistoryid: ");
+            String medhistoryid = sc.nextLine();
+            System.out.println("Enter updatemedical nurseinchargein:");
+            int nurseinchargein = sc.nextInt();
             System.out.println("Enter updatemedical symptoms: ");
             String symptoms = sc.nextLine();
-            System.out.println("Enter updatemedical addedremack: ");
-            String addedremack = sc.nextLine();
             System.out.println("Enter updatemedical temperaturereadings: ");
             int temperaturereadings = sc.nextInt();
             System.out.println("Enter updatemedical visitdate: ");
             int visitdate = sc.nextInt();
-            System.out.println("Enter updatemedical timein: ");
-            int timein = sc.nextInt();
-            System.out.println("Enter updatemedical timeout: ");
-            int timeout = sc.nextInt();
-            System.out.println("Enter updatemedical medicationadministered: ");
-            String medicationadministered = sc.nextLine();
-            System.out.println("Enter updatemedical nurseincharge: ");
-            String nurseincharge = sc.nextLine();
+            System.out.println("Enter updatemedical treatment: ");
+            String treatment = sc.nextLine();
 
             UpdateMedical updateUpdateMedical = new UpdateMedical();
-            updateUpdateMedical.setPatient(patient);
-            updateUpdateMedical.setAddedRemack(addedremack);
-            updateUpdateMedical.setStudentNumber(studentnumber);
-            updateUpdateMedical.setFirstName(firstname);
-            updateUpdateMedical.setMiddleName(medicationadministered);
-            updateUpdateMedical.setLastName(lastname);
+            updateUpdateMedical.setId(id);
+            updateUpdateMedical.setStudentId(studentid);
+            updateUpdateMedical.setAilmentId(ailmentid);
+            updateUpdateMedical.setMedHistoryId(medhistoryid);
+            updateUpdateMedical.setNurseInChargeIn(nurseinchargein);
             updateUpdateMedical.setSymptoms(symptoms);
-            updateUpdateMedical.setAddedRemack(addedremack);
             updateUpdateMedical.setTemperatureReadings(temperaturereadings);
             updateUpdateMedical.setVisitDate(visitdate);
-            updateUpdateMedical.setTimeIn(timein);
-            updateUpdateMedical.setTimeOut(timeout);
-            updateUpdateMedical.setMedicationAdministered(medicationadministered);
-            updateUpdateMedical.setNurseInCharge(nurseincharge);
+            updateUpdateMedical.setTreatment(treatment);
 
             boolean result = updatemedicalFacade.updateUpdateMedical(updateUpdateMedical);
 

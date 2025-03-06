@@ -8,7 +8,7 @@ public class UpdateMedicalFacadeImpl implements UpdateMedicalFacade {
 
     private UpdateMedicalDao updatemedicalDao = new com.rocs.nurse.desktop.application.app.facade.UpdateMedicalFacade.impl.UpdateMedicalDaoImpl();
 
-    public UpdateMedical getUpdateMedicalById(String id) {
+    public UpdateMedical getUpdateMedicalById(Integer id) {
 UpdateMedical updatemedical = this.updatemedicalDao.findUpdateMedicalById(id);
 return updatemedical;
     }

@@ -5,7 +5,7 @@ import com.rocs.nurse.desktop.application.model.UpdateMedical.UpdateMedical;
 
 public record UpdateMedicalDaoImpl() implements UpdateMedicalDao {
     @Override
-    public UpdateMedical findUpdateMedicalById(String id) {
+    public UpdateMedical findUpdateMedicalById(Integer id) {
         return null;
     }
 

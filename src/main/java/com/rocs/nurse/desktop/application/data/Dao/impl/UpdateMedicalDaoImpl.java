@@ -12,21 +12,16 @@ public abstract class UpdateMedicalDaoImpl implements UpdateMedicalDao {
 
     public boolean updateUpdateMedical(UpdateMedical updatemedical) {
 try(Connection con = ConnectorHelper.getConnection()) {
-    PreparedStatement stmt = con.prepareStatement ("UPDATE UPDATEMEDICAL SET ID = ?, PATIent = ?, STUDENTNUMBER = ?, FIRSTNAME = ?, MIDDLENAME = ?, LASTNAME = ?, SYMPTOMS = ?, ADDEDREMACK = ?, TEMPERATUREREADING = ?, VISITDATE = ?, TIMEIN =?, TIMEOUT =?, MIDICATIONADMINISTERED = ?, NURSEINCHARGE = ?,");
-stmt.setString(1, updatemedical.getId());
-stmt.setInt(2, updatemedical.getPatient());
-stmt.setString(3, updatemedical.getStudentNumber());
-stmt.setString(4, updatemedical.getFirstName());
-stmt.setString(5, updatemedical.getMiddleName());
-stmt.setString(6, updatemedical.getLastName());
+    PreparedStatement stmt = con.prepareStatement ("UPDATE UPDATEMEDICAL SET ID = ?,  STUDENTID = ?, AILMENTID = ?, MEDHISTORYID = ?, NURSEINCHARGEIN = ?, SYMPTOMS = ?,  TEMPERATUREREADINGS = ?, VISITDATE = ?, TREATMENT = ?,");
+stmt.setInt(1, updatemedical.getId());
+stmt.setInt(3, updatemedical.getStudentId());
+stmt.setInt(4, updatemedical.getAilmentId());
+stmt.setString(5, updatemedical.getMedHistoryId());
+stmt.setInt(6, updatemedical.getNurseInChargeIn());
 stmt.setString(7, updatemedical.getSymptoms());
-stmt.setString(8, updatemedical.getAddedRemack());
-stmt.setInt(9, updatemedical.getTemperatureReadings());
-stmt.setInt(10, updatemedical.getVisitDate());
-stmt.setInt(11, updatemedical.getTimeIn());
-stmt.setInt(12, updatemedical.getTimeOut());
-stmt.setString(13, updatemedical.getMedicationAdministered());
-stmt.setString(14, updatemedical.getNurseInCharge());
+stmt.setInt(8, updatemedical.getTemperatureReadings());
+stmt.setInt(9, updatemedical.getVisitDate());
+stmt.setString(10, updatemedical.getTreatment());
 int affectedRows = stmt.executeUpdate();
 return affectedRows > 0;
 } catch (SQLException e) {
