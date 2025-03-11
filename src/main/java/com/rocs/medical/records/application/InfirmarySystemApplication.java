@@ -17,6 +17,11 @@ import com.rocs.medical.records.application.app.facade.frequentVisitReport.Frequ
 import com.rocs.medical.records.application.app.facade.frequentVisitReport.impl.FrequentVisitReportFacadeImpl;
 import com.rocs.medical.records.application.model.reports.FrequentVisitReport;
 
+import com.rocs.medical.records.application.app.facade.UpdateMedical.UpdateMedicalFacade;
+import com.rocs.medical.records.application.app.facade.UpdateMedical.impl.UpdateMedicalFacadeImpl;
+import com.rocs.medical.records.application.model.reports.UpdateMedical;
+
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,6 +40,8 @@ public class InfirmarySystemApplication {
         System.out.println("3 - Retrieve Student Medical Record");
         System.out.println("4 - Frequent Visit Report");
         System.out.println("5 - Check Low Stock Medicine");
+        System.out.println("6 - Update Medical Record");
+
 
         System.out.println("Enter your choice: ");
         int choice = scanner.nextInt();
@@ -140,6 +147,83 @@ public class InfirmarySystemApplication {
                 }
                 break;
             }
+
+
+
+
+            case 6:{
+
+                com.rocs.medical.records.application.app.facade.UpdateMedicalFacade.UpdateMedicalFacade updatemedicalFacade = new UpdateMedicalFacadeImpl();
+                Scanner sc = new Scanner(System.in);
+
+                System.out.println("Welcome to Nurse Desktop System...");
+                System.out.println("Please enter your selection: ");
+                System.out.println("1. Nurse Desktop UpdateMedical Maintinance");
+                System.out.println("2. Patient Maintinance");
+                System.out.println("3. Desktop");
+                System.out.println("4. Return");
+                System.out.println("5. Press other keys to exit.");
+                System.out.println("6. Enter your choise: ");
+                int input = sc.nextInt();
+
+
+
+                sc.nextLine();
+                System.out.println("Enter the id of the updatemedical to update: ");
+                int id = sc.nextInt();
+                com.rocs.medical.records.application.model.impl.UpdateMedical updatemedical = updatemedicalFacade.getUpdateMedicalById(id);
+                if (updatemedical == null) {
+                    System.out.println("UpdateMedical to update not found.");
+                } else {
+                    System.out.println("Updating an updatemedical");
+                    System.out.println("Enter updatemedical studentid: ");
+                    int studentid = sc.nextInt();
+                    System.out.println("Enter updatemedical ailmentid: ");
+                    int ailmentid = sc.nextInt();
+                    System.out.println("Enter updatemedical medhistoryid: ");
+                    String medhistoryid = sc.nextLine();
+                    System.out.println("Enter updatemedical nurseinchargein:");
+                    int nurseinchargein = sc.nextInt();
+                    System.out.println("Enter updatemedical symptoms: ");
+                    String symptoms = sc.nextLine();
+                    System.out.println("Enter updatemedical temperaturereadings: ");
+                    int temperaturereadings = sc.nextInt();
+                    System.out.println("Enter updatemedical visitdate: ");
+                    int visitdate = sc.nextInt();
+                    System.out.println("Enter updatemedical treatment: ");
+                    String treatment = sc.nextLine();
+
+                    com.rocs.medical.records.application.model.impl.UpdateMedical updateUpdateMedical = new com.rocs.medical.records.application.model.impl.UpdateMedical();
+                    updateUpdateMedical.setId(id);
+                    updateUpdateMedical.setStudentId(studentid);
+                    updateUpdateMedical.setAilmentId(ailmentid);
+                    updateUpdateMedical.setMedHistoryId(medhistoryid);
+                    updateUpdateMedical.setNurseInChargeIn(nurseinchargein);
+                    updateUpdateMedical.setSymptoms(symptoms);
+                    updateUpdateMedical.setTemperatureReadings(temperaturereadings);
+                    updateUpdateMedical.setVisitDate(visitdate);
+                    updateUpdateMedical.setTreatment(treatment);
+
+                    boolean result = updatemedicalFacade.updateUpdateMedical(updateUpdateMedical);
+
+                    if (result) {
+                        System.out.println("UpdateMedical successfully updated.");
+
+                    } else {
+                        System.out.println("UpdateMedical failed.");
+
+                    }
+
+                }
+
+
+            }
+
+        }
+
+
+
+    }
             default:
                 System.out.println("Invalid choice. Please select a valid option.");
                 break;
